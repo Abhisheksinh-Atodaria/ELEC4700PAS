@@ -44,7 +44,7 @@ time = nan(1,Nt);
 InputL = nan(1,Nt);
 InputR = nan(1,Nt);
 OutputL = nan(1,Nt);
-OuptutR = nan(1,Nt);
+OutputR = nan(1,Nt);
 
 Ef =zeros(size(z));
 Er = zeros(size(z));
@@ -97,7 +97,7 @@ for i = 2:Nt
     Er(1:Nz-1) = fsync*Er(2:Nz);
 
     OutputR(i) = Ef(Nz);
-    OuptutR(i) = Er(1);
+    OutputR(i) = Er(1);
 
     if mod(i,plotN) == 0
         subplot(3,1,1)
@@ -113,7 +113,7 @@ for i = 2:Nt
         plot(z*10000,real(Ef),'b'); hold on
         plot(z*10000,imag(Ef),'b--'); hold off
         xlim(XL*1e4)
-        ylim(Yl)
+        ylim(YL)
         xlabel('z(\mum)')
         ylabel('E_r')
         legend('\Re','\Im')
@@ -121,9 +121,9 @@ for i = 2:Nt
         hold off
         subplot(3,1,3)
         plot(time*1e12,real(InputL),'r'); hold on
-        plot(time*1e12,real(OuptutR),'g');
+        plot(time*1e12,real(OutputR),'g');
         plot(time*1e12,real(InputR),'b');
-        plot(time*1e12,real(OuptutL),'m');
+        plot(time*1e12,real(OutputL),'m');
         xlim([0,Nt*dt*1e12])
         ylim(YL)
         xlabel('time(ps)')
