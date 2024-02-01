@@ -62,7 +62,7 @@ n_e=[];
         % fprintf(1, 'Ridge width %.3f - TM Mode %d - neff = %.6f\n', rw, i, neff);
 
         % % Plot TM mode
-        % figure(i);
+        % figurGeometry_changese(i);
         % subplot(2, 2, 3);
         % contourmode(x, y, Hx(:,:,i));
         % title(['Ridge width ', num2str(rw), ' TM Mode Hx ', num2str(i)]); xlabel('x'); ylabel('y');
