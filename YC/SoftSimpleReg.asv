@@ -27,7 +27,7 @@ c_eta_0 = sqrt(c_mu_0/c_eps_0);
 
 
 tSim = 200e-15;
-f = 230e12;
+f = 200e12;
 lambda = c_c/f;
 
 xMax{1} = 20e-6;
@@ -40,7 +40,7 @@ Reg.n = 1;
 mu{1} = ones(nx{1},ny{1})*c_mu_0;
 
 epi{1} = ones(nx{1},ny{1})*c_eps_0;
-epi{1}(125:150,55:2:95)= c_eps_0*10;
+epi{1}(125:150,55:95)= c_eps_0*10;
 
 
 sigma{1} = zeros(nx{1},ny{1});
@@ -68,12 +68,12 @@ bc{1}.s(1).xpos = nx{1}/(4) + 1;
 bc{1}.s(1).type = 'ss';
 bc{1}.s(1).fct = @PlaneWaveBC;
 
-
-bc{1}.s(2).xpos = nx{1}/(4) + 1;
-bc{1}.s(2).type = 'ss';
-bc{1}.s(2).fct = @PlaneWaveBC;
+bc{1}.NumS = 10;
+bc{1}.s(1).ypos = ny{1}/(6) + 10;
+bc{1}.s(1).type = 'ss';
+bc{1}.s(1).fct = @PlaneWaveBC;
 % mag = -1/c_eta_0;
-mag = 1;
+% mag = 1;
 phi = 0;
 omega = f*2*pi;
 betap = 0;
@@ -83,16 +83,7 @@ s = 0;
 y0 = yMax/2;
 sty = 1.5*lambda;
 bc{1}.s(1).paras = {mag,phi,omega,betap,t0,st,s,y0,sty,'s'};
-
-mag1 = 1;
-phi1 = 30;
-omega1 = f*2*pi;
-betap1 = 0;
-t01 = 30e-15;
-st1 = -0.05;
-s1 = 0;
-y01 = yMax/4;
-bc{1}.s(2).paras = {mag1,phi1,omega1,betap1,t01,st1,s1,y01,sty,'s'};
+% bc{2}.s(1).paras = {mag,phi,omega,betap,t0,st,s,y0,sty,'s'};
 
 Plot.y0 = round(y0/dx);
 
